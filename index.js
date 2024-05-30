@@ -21,8 +21,10 @@ export default async ({ req, res, log, error }) => {
     )
 
     const message = `We have a new work request!\n- First name: ${firstName}\n- Last name: ${lastName}\n- Email: ${email}${
-      goal ? `\n- Goal: ${goal}` : ""
-    }`
+      industry ? `\n- Industry: ${industry}` : ""
+    }${goal ? `\n- Goal: ${goal}` : ""}${
+      contactPreference ? `\n- Contact preference: ${contactPreference}` : ""
+    }${contactInfo ? `\n- Contact info: ${contactInfo}` : ""}`
 
     log(message)
     // await axios.post(slackWebhookUrl, {
