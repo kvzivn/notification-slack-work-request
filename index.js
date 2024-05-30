@@ -1,10 +1,10 @@
 import { Client, Databases } from "node-appwrite"
-// import axios from "axios"
+import axios from "axios"
 
-export default async ({ req, res, log, error }) => {
+export default async ({ req, res, error }) => {
   const { stakeholderId, industry, goal, contactPreference, contactInfo } =
     req.body
-  // const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL
+  const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL
 
   try {
     const client = new Client()
@@ -27,10 +27,9 @@ export default async ({ req, res, log, error }) => {
       contactPreference ? `\n- Contact preference: ${contactPreference}` : ""
     }${contactInfo ? `\n- Contact info: ${contactInfo}` : ""}`
 
-    log(message)
-    // await axios.post(slackWebhookUrl, {
-    //   text: message,
-    // })
+    await axios.post(slackWebhookUrl, {
+      text: message,
+    })
   } catch (e) {
     error("Failed to send message: " + e.message)
     return res.send("Failed to send message")
@@ -38,5 +37,3 @@ export default async ({ req, res, log, error }) => {
 
   return res.empty()
 }
-
-// 6622b2fe641cdab814ff
