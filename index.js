@@ -14,15 +14,13 @@ export default async ({ req, res, log, error }) => {
 
     const databases = new Databases(client)
 
-    const stakeholder = await databases.getDocument(
+    const { firstName, lastName, email } = await databases.getDocument(
       process.env.APPWRITE_DATABASE_ID,
       process.env.APPWRITE_STAKEHOLDER_COLLECTION_ID,
       stakeholderId
     )
 
-    const { name, email } = stakeholder.document
-
-    const message = `We have a new work request!\n- Name: ${name}\n- Email: ${email}${
+    const message = `We have a new work request!\n- First name: ${firstName}\n- Last name: ${lastName}\n- Email: ${email}${
       goal ? `\n- Goal: ${goal}` : ""
     }`
 
