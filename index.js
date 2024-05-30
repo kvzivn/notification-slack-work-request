@@ -2,7 +2,7 @@ import { Client, Databases } from "node-appwrite"
 // import axios from "axios"
 
 export default async ({ req, res, log, error }) => {
-  const { stakeholderId, goal } = JSON.parse(req.body)
+  const { stakeholderId, goal } = req.body
   // const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL
 
   try {
@@ -37,3 +37,5 @@ export default async ({ req, res, log, error }) => {
 
   return res.empty()
 }
+
+// 6622b2fe641cdab814ff
