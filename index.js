@@ -1,9 +1,9 @@
-import { Client, Databases, Query } from "node-appwrite"
-import axios from "axios"
+import { Client, Databases } from "node-appwrite"
+// import axios from "axios"
 
 export default async ({ req, res, log, error }) => {
   const { stakeholderId, goal } = JSON.parse(req.body)
-  const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL
+  // const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL
 
   const client = new Client()
   client
